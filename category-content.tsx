@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { ScrollReveal } from "@/hooks/use-scroll-reveal"
 
 interface CategoryContentProps {
