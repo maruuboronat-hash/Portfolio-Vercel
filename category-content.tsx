@@ -7,6 +7,7 @@ interface CategoryContentProps {
   categoryData: {
     title: string
     description: string
+    coverImage: string
     projects: Array<{ id: string; title: string }>
   }
 }
