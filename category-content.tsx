@@ -16,6 +16,7 @@ interface CategoryContentProps {
 export function CategoryContent({ categoryData }: CategoryContentProps) {
   return (
     <>
+      {/* HEADER */}
       <ScrollReveal as="header" className="px-6 md:px-12 mb-16">
         <div className="max-w-6xl mx-auto">
           <Link
@@ -24,15 +25,33 @@ export function CategoryContent({ categoryData }: CategoryContentProps) {
           >
             Proyectos
           </Link>
+
           <h1 className="scroll-reveal-child font-heading text-4xl md:text-6xl tracking-tight mb-6">
             {categoryData.title}
           </h1>
+
           <p className="scroll-reveal-child text-base md:text-lg text-muted-foreground max-w-3xl leading-relaxed">
             {categoryData.description}
           </p>
         </div>
       </ScrollReveal>
 
+      {/* COVER IMAGE */}
+      <ScrollReveal as="section" className="px-6 md:px-12 mb-24">
+        <div className="max-w-6xl mx-auto">
+          <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+            <Image
+              src={categoryData.coverImage}
+              alt={`Portada ${categoryData.title}`}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* PROJECTS GRID */}
       <ScrollReveal as="section" className="px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
@@ -42,15 +61,13 @@ export function CategoryContent({ categoryData }: CategoryContentProps) {
                 href={`/proyecto/${project.id}`}
                 className="scroll-reveal-child group bg-background"
               >
-                {/* Project image placeholder */}
                 <div className="aspect-[4/3] bg-muted relative overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-xs uppercase tracking-widest opacity-30 px-4 text-center">
                     {project.title}
                   </div>
                   <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-500" />
                 </div>
-                
-                {/* Project info */}
+
                 <div className="py-6">
                   <h2 className="font-heading text-lg md:text-xl group-hover:opacity-70 transition-opacity">
                     {project.title}
@@ -64,3 +81,4 @@ export function CategoryContent({ categoryData }: CategoryContentProps) {
     </>
   )
 }
+
